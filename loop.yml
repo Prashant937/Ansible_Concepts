@@ -1,0 +1,28 @@
+---
+- name: looping
+  hosts: db-server
+  become: yes
+  vars:
+    users:
+      - Prashant
+      - Arjun
+      - Shivam
+      - Rishab
+    my_groups:
+      - Omni
+      - Cognos
+  
+  tasks:
+  - name: Create groups
+    group:
+      name: "{{ item }}"
+      state: present
+    loop: "{{my_groups}}"
+
+  - name: Create users
+    user: 
+      name: "{{ item }}"
+      state: present
+      group: "Omni"
+    loop: "{{ users }}"
+...

@@ -1,0 +1,24 @@
+---
+- name: nginx install & start services
+  hosts: db-server
+  become: yes
+  vars:
+    Prashant: ["Intern","DevOps"]
+    
+  tasks:
+  - name: install nginx
+    apt:
+      name: nginx
+      state: latest
+      
+  - name: start nginx
+    service:
+      name: nginx
+      state: started
+
+  - name: Practicing
+    debug:
+      msg: "{{item}}"
+    loop: "{{Prashant}}"
+...
+

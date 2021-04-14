@@ -1,0 +1,20 @@
+---
+- name: Command Module
+  hosts: db-server
+  become: yes
+  tasks:
+    - name: Checking Working Directory
+      command: pwd chdir=/home
+      register: result
+    - debug:
+        msg: "{{result.stdout}}" 
+
+    - name: Creating Directory
+      command: mkdir /home/ubuntu/ansible-test creates=/home/ubuntu/ansible-test
+      register: result
+    - debug:
+        msg: "{{result.stdout}}"
+
+    - name: Making File
+      command: touch demo-file.txt chdir=/home/ubuntu/
+...

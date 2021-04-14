@@ -1,0 +1,26 @@
+---
+- name: creating file on host
+  hosts: db-server
+  become: yes
+  tasks:
+    - name: Creating file on host using playbook
+      file:
+        path: /home/ubuntu/Sample_File.txt
+        state: touch
+
+      loop:
+        - Sample_File2.txt
+        - Sample_File3.txt
+        - Sample_File4.txt
+        - Sample_File5.txt
+
+    - name: Creating a Directory on host using playbook
+      file:
+        path: /home/ubuntu/Sample_Directory
+        state: directory
+
+    - name: Removing a directory on hosts using a playbook
+      file: 
+        path: /home/ubuntu/Sample_Directory
+        state: absent
+...

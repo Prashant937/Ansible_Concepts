@@ -1,0 +1,11 @@
+#Transferring file to many servers/machines
+$ Ansible all -m copy -a "src = /etc/yum.conf dest = /tmp/yum.conf"
+
+#Creating new directory
+$ Ansible all -m file -a "dest = /path/user1/new mode = 777 owner = user1 group = user1 state = directory" 
+
+#Deleting whole directory and files
+$ Ansible all -m file -a "dest = /path/user1/new state = absent"
+
+#Gathering Facts
+$ Ansible all -m setup 

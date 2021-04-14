@@ -1,0 +1,13 @@
+---
+- name: Copying files from local to host
+  hosts: db-server
+  become: yes
+  tasks:
+  - name: copying file with the help of playbook
+    copy:
+      src: /home/knoldus/2.txt
+      dest: /home/ubuntu
+      owner: ubuntu
+      group: ubuntu
+      mode: 0644
+...

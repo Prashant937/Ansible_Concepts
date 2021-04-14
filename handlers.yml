@@ -1,0 +1,26 @@
+---
+- name: checking for apache installation
+  hosts: db-server
+
+  vars:
+    http_port: 80
+    max_clients: 100
+  
+  tasks:
+  - name: installing apache on host
+    apt:
+      name: apache2 
+      state: present
+    become: yes
+
+  handlers:
+    - name: starting apache
+      ansible.builtin.service:
+        name: apache2
+        state: started
+
+    - name: restarting apache
+      ansible.builtin.service:
+        name: apache2
+        state: restarted
+...
