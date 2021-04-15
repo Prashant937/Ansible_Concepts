@@ -12,9 +12,11 @@
       name: apache2 
       state: present
     become: yes
+    notify:
+    - Start apache
 
   handlers:
-    - name: starting apache
+    - name: Start apache
       ansible.builtin.service:
         name: apache2
         state: started
